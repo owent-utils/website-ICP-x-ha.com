@@ -2,11 +2,39 @@
 <html lang="zh-cn">
   <head>
     <title>个人技术笔记 - I'm OWenT</title>
+    <style type="text/css">
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: rgb(51, 51, 51);
+      }
+      #attach_head {
+        font-size: 64px;
+        text-align: center;
+        color: white;
+        padding: 0;
+        margin: 0;
+      }
+      #attach_loading {
+        font-size: 32px;
+        border: solid white 2px;
+        color: white;
+        padding: 0;
+        margin: 0;
+      }
+      #attach_foot, #attach_foot a {
+        background-color: rgb(24, 24, 24);
+        text-align: center;
+        color: white;
+        padding: 0;
+        margin: 0;
+      }
+    </style>
   </head>
-  <body style="background-color: rgb(51, 51, 51);">
-    <div style="font-size: 64px; text-align: center; color: white; padding: 0; margin: 0;" id="attach_head">个人技术笔记</div>
-    <div id="attach_loading" style="font-size: 32px; border: solid white 2px; ;color: white; padding: 0; margin: 0;">正在加载，请稍后...</div>
-    <div style="background-color: rgb(24, 24, 24); text-align: center; color: white; padding: 0; margin: 0;" id="attach_foot"><a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备2022003252号-3</a></div>
+  <body>
+    <divid="attach_head">个人技术笔记</div>
+    <div id="attach_loading">正在加载，请稍后...</div>
+    <div id="attach_foot"><a href="https://beian.miit.gov.cn/" target="_blank">沪ICP备2022003252号-3</a></div>
   </body>
   <script type="text/javascript">
     window.onload = function() {
@@ -15,6 +43,12 @@
       dom.setAttribute("id", "main_site");
       dom.setAttribute("style", "min-height: 720px; padding: 0; margin: 0; width: 100%; height: " + height + ";");
       dom.setAttribute("src", "https://owent.net");
+      dom.onchange = function() {
+        const el = document.getElementById("attach_loading");
+        if (el) {
+          el.innerText = "任在加载，尚未全部完成，请稍后...";
+        }
+      };
       dom.onload = function() {
         document.body.removeChild(document.getElementById("attach_loading"));
       };
